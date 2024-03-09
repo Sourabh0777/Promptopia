@@ -1,3 +1,4 @@
+"use client";
 import { Suspense, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { useSearchParams } from "next/dist/client/router";
