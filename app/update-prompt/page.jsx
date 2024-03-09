@@ -6,9 +6,9 @@ import { useRouter, useSearchParams } from "next/navigation";
 
 const UpdatePrompt = () => {
   const router = useRouter();
-  const [searchParams] = useSearchParams(); // Changed the usage of useSearchParams
+  const [searchParams, loading] = useSearchParams(); // Include loading state from useSearchParams()
 
-  const promptId = searchParams.get("id"); // Wrapped useSearchParams() with Suspense
+  const promptId = searchParams.get("id");
 
   const [post, setPost] = useState({ prompt: "", tag: "" });
   const [submitting, setIsSubmitting] = useState(false);
@@ -54,13 +54,17 @@ const UpdatePrompt = () => {
 
   return (
     <Suspense fallback={<div>Loading...</div>}>
-      <Form
-        type="Edit"
-        post={post}
-        setPost={setPost}
-        submitting={submitting}
-        handleSubmit={updatePrompt}
-      />
+      {loading ? ( // Check if loading is true before rendering the form
+        <div>Loading...</div>
+      ) : (
+        <Form
+          type="Edit"
+          post={post}
+          setPost={setPost}
+          submitting={submitting}
+          handleSubmit={updatePrompt}
+        />
+      )}
     </Suspense>
   );
 };
