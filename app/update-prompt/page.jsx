@@ -7,7 +7,9 @@ import Form from "@components/Form";
 
 const UpdatePrompt = () => {
   const router = useRouter();
-  const promptId = useSearchParams().get("id"); // Wrapped useSearchParams() with Suspense
+  const [searchParams] = useSearchParams(); // Changed the usage of useSearchParams
+
+  const promptId = searchParams.get("id"); // Wrapped useSearchParams() with Suspense
 
   const [post, setPost] = useState({ prompt: "", tag: "" });
   const [submitting, setIsSubmitting] = useState(false);
