@@ -1,9 +1,8 @@
 "use client";
 import { Suspense, useEffect, useState } from "react";
-import { useSearchParams } from "next/dist/client/router";
 
 import Form from "@components/Form";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
 const UpdatePrompt = () => {
   const router = useRouter();
